@@ -1,0 +1,30 @@
+## Dêe uma estreal! :star:
+Se vc gostou do projeto client-server-api, por favor dêe uma estrela
+
+## Como executar:
+Execute do docker-compose na pasta 'server' para criar o banco de dados sql server:
+docker-compose up -d
+
+Execute o comando abaixo na pasta 'server':
+go run .\cmd\server\main.go
+
+Execute o comando abaixo na pasta 'client':
+go run .\cmd\client\main.go
+
+O arquivo 'cotacao.txt' gerado no 'client' fica dentro da pasta 'txt'.
+
+Quando tento rodar com o banco de dados SQLite utilizando gorm está dando o seguinte erro:
+[error] failed to initialize database, got error Binary was compiled with 'CGO_ENABLED=0', go-sqlite3 requires cgo to work. This is a stub
+panic: Binary was compiled with 'CGO_ENABLED=0', go-sqlite3 requires cgo to work. This is a stub
+
+Por isso estou utilizando o banco de dados sql server.
+
+## Tecnologias implementadas:
+
+- go 1.20
+ - Router chi
+ - gorm (sql server)
+ - context
+ - net/http
+ - os
+ 
