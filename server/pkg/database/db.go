@@ -1,10 +1,8 @@
 package database
 
 import (
-	"fmt"
-
 	"github.com/jeanSagaz/server/internal/domain/entity"
-	"gorm.io/driver/sqlserver"
+	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )
@@ -21,19 +19,19 @@ func NewDb() *Database {
 func (d *Database) Connect() (*gorm.DB, error) {
 	var err error
 
-	// d.Db, err = gorm.Open(sqlite.Open("test.db"), &gorm.Config{
-	// 	Logger: logger.Default.LogMode(logger.Info),
-	// })
-
-	dsn := fmt.Sprintf("sqlserver://%s:%s@%s:%d?database=%s",
-		"sa",
-		"SqlServer2019!",
-		"localhost",
-		1434,
-		"fc")
-	d.Db, err = gorm.Open(sqlserver.Open(dsn), &gorm.Config{
+	d.Db, err = gorm.Open(sqlite.Open("test.db"), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Info),
 	})
+
+	// dsn := fmt.Sprintf("sqlserver://%s:%s@%s:%d?database=%s",
+	// 	"sa",
+	// 	"SqlServer2019!",
+	// 	"localhost",
+	// 	1434,
+	// 	"fc")
+	// d.Db, err = gorm.Open(sqlserver.Open(dsn), &gorm.Config{
+	// 	Logger: logger.Default.LogMode(logger.Info),
+	// })
 
 	if err != nil {
 		panic(err)
